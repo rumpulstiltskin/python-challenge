@@ -1,4 +1,4 @@
-import csv #Import csv module
+import csv
 
 with open ('Resources/budget_data.csv') as csvfile:
 

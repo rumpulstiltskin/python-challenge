@@ -1,6 +1,6 @@
 import csv #Import csv module
 
-with open ('Resources/budget_data.csv') as csvfile: #Start csv file handling
+with open ('Resources/budget_data.csv') as csvfile:
 
     csvreader=csv.reader(csvfile, delimiter=',') 
     header=next(csvreader) 
@@ -28,20 +28,16 @@ with open ('Resources/budget_data.csv') as csvfile: #Start csv file handling
         months.append(month) 
         prolosses.append(proloss) 
     
-    m_count = len(months) #Count the total of months in the "Date" column
-    #print(m_count)
+    m_count = len(months) 
+    
 
-    #Begin data analysis
-
-#First loop is through list prolosses (variable loop1 as loop index counter)
+   
 for loop1 in range (m_count):
     total=total+int(prolosses[loop1]) 
 
 
-#Second loop is through list prolosses (variable loop2 as loop index counter)
 for loop2 in range (m_count-1): #Restrict loop to avoid overflow (last line +1)
-    a_change=a_change+(float(prolosses[loop2+1])-float(prolosses[loop2])) #Calculate sum of changes
-#print(a_change/(m_count-1))
+    a_change=a_change+(float(prolosses[loop2+1])-float(prolosses[loop2])) 
     m_change=(float(prolosses[loop2+1])-float(prolosses[loop2])) 
     if m_change>delta1: 
         delta1=m_change
@@ -49,8 +45,6 @@ for loop2 in range (m_count-1): #Restrict loop to avoid overflow (last line +1)
     else:
         delta1=delta1
 
-#print(delta1)
-#print(months[delta_line1+1])
 
     if m_change<delta2: 
         delta2=m_change
@@ -58,10 +52,6 @@ for loop2 in range (m_count-1): #Restrict loop to avoid overflow (last line +1)
     else:
         delta2=delta2
 
-#print(delta2)
-#print(months[delta_line2+1])
-
-#generate output lines
 
 analysis=f'\
 Financial Analysis\n\
